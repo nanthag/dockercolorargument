@@ -1,0 +1,26 @@
+﻿kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: devfile-dotnet-deploy-nan
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devfile-dotnet-deploy
+  template:
+    metadata:
+      labels:
+        app: devfile-dotnet-deploy
+    spec:
+      containers:
+        - name: main
+          image: "dotnet-image:latest"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          resources:
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
