@@ -1,0 +1,15 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: dotnet-deploy
+  name: devfile-dotnet-deploy-nan
+spec:
+  ports:
+    - name: http-8081
+      port: 8081
+      protocol: TCP
+      targetPort: 8081
+  selector:
+    app: devfile-dotnet-deploy
+  type: LoadBalancer
